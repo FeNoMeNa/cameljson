@@ -14,12 +14,12 @@ func TestMiddleware(t *testing.T) {
 		want []byte
 	}{
 		{
-			[]byte(`{"NamE":"Ivan","Age":26,"_sex":"male"}`),
+			[]byte(`{"NamE":"Ivan","AGE":26,"_sex":"male"}`),
 			[]byte(`{"namE":"Ivan","age":26,"_sex":"male"}`),
 		},
 		{
-			[]byte(`[{"Name":"Ivan"},{"age":26}]`),
-			[]byte(`[{"name":"Ivan"},{"age":26}]`),
+			[]byte(`[{"FIRST_NAME":"Ivan"},{"age":26}]`),
+			[]byte(`[{"first_name":"Ivan"},{"age":26}]`),
 		},
 		{
 			[]byte(`{"MaP":{"PaM":"amp"},array:[1,2,3]}`),

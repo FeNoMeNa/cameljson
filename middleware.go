@@ -51,7 +51,7 @@ func adaptFieldNames(o interface{}) {
 	if f, ok := o.(map[string]interface{}); ok {
 		for k, v := range f {
 			delete(f, k)
-			name := strings.ToLower(k[:1]) + k[1:]
+			name := toCamelcase(k)
 			f[name] = v
 			adaptFieldNames(v)
 		}
@@ -62,4 +62,11 @@ func adaptFieldNames(o interface{}) {
 			adaptFieldNames(v)
 		}
 	}
+}
+
+func toCamelcase(name string) string {
+	if name == strings.ToUpper(name) {
+		return strings.ToLower(name)
+	}
+	return strings.ToLower(name[:1]) + name[1:]
 }
